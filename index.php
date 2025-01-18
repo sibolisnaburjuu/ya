@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:wormhole="http://www.w3.org/1999/xhtml" lang="id-ID">
 <head>
-  <meta name="google-site-verification" content="Xfxi5wDuj0BO641d_sKnjSUh2HHuoH6kVw3D2IXXqb4" />
+  <meta name="google-site-verification" content="zXMT-eefH1_2C5u3sMAVINYWVTReTlorfDeYZkQflvA" />
   <meta charset="utf-8" />
   <title>SLOT88 GACOR: Situs Slot Resmi Fitur Terlengkap Mudah Jackpot Maxwin Setiap Hari</title>
   <meta name="description" content="Selamat datang di Slot88 Gacor adalah salah satu situs slot resmi fitur terlengkap sehingga mudah untuk mendapatkan jackpot maxwin setiap harinya disini." />
