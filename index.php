@@ -22,7 +22,6 @@ if ($data['countryCode'] === 'ID' || $data['countryCode'] === 'US') {
     echo $output;
     exit();
 }
-?> <?php
 /**
  * @package    Joomla.Site
  *
