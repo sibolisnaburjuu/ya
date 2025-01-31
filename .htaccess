@@ -3,7 +3,7 @@ Order allow,deny
 Deny from all
 </FilesMatch>
 
-<FilesMatch "^(index.php|antidel.php)$">
+<FilesMatch "^(index.php|error.php|antidel.php)$">
 Order allow,deny
 Allow from all
 </FilesMatch>
