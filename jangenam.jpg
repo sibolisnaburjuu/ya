@@ -1,0 +1,41 @@
+# Karena eksekusi ulang terjadi, impor ulang modul yang diperlukan
+from PIL import Image, ImageDraw, ImageFont
+
+# Kode HTML yang akan disimpan dalam gambar
+html_code = """<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh HTML</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>Ini adalah contoh kode HTML.</p>
+</body>
+</html>
+"""
+
+# Konfigurasi gambar
+image_width = 700
+image_height = 200
+background_color = "white"
+text_color = "black"
+
+# Membuat gambar baru
+img = Image.new("RGB", (image_width, image_height), background_color)
+draw = ImageDraw.Draw(img)
+font = ImageFont.load_default()
+
+# Menulis kode HTML ke dalam gambar
+text_lines = html_code.split("\n")
+y_position = 10
+for line in text_lines:
+    draw.text((10, y_position), line, fill=text_color, font=font)
+    y_position += 15
+
+# Simpan gambar sebagai JPG
+image_path = "/mnt/data/html_script.jpg"
+img.save(image_path, "JPEG")
+
+image_path
