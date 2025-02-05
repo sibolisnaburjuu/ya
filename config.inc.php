@@ -29,7 +29,7 @@
 installed = On
 
 ; The canonical URL to the OJS installation (excluding the trailing slash)
-base_url = "http://emediac.com.tr"
+base_url = "https://irahpress.com/journals"
 
 ; Session cookie name
 session_cookie_name = OJSSID
@@ -98,7 +98,7 @@ restful_urls = Off
 ; An empty string indicates that all hosts should be trusted (not recommended!)
 ; Example:
 ; allowed_hosts = '["myjournal.tld", "anotherjournal.tld", "mylibrary.tld"]'
-allowed_hosts = "[\"emediac.com.tr\"]"
+; allowed_hosts = "[\"irahpress.com\"]"
 
 ; Allow the X_FORWARDED_FOR header to override the REMOTE_ADDR as the source IP
 ; Set this to "On" if you are behind a reverse proxy and you control the
@@ -114,7 +114,7 @@ trust_x_forwarded_for = Off
 citation_checking_max_processes = 3
 
 ; Display a message on the site admin and journal manager user home pages if there is an upgrade available
-show_upgrade_warning = On
+show_upgrade_warning = Off
 
 ; Set the following parameter to off if you want to work with the uncompiled (non-minified) JavaScript
 ; source for debugging or if you are working off a development branch without compiled JavaScript.
@@ -139,9 +139,9 @@ sitewide_privacy_statement = Off
 
 driver = mysql
 host = localhost
-username = umitaydogan_ojs
-password = "Trabzonspor11@"
-name = umitaydogan_ojs
+username = irahpress_journal
+password = "C8#4n%QKdADz"
+name = irahpress_journal
 
 ; Set the non-standard port and/or socket, if used
 ; port = 3306
@@ -195,7 +195,7 @@ web_cache_hours = 1
 [i18n]
 
 ; Default locale
-locale = tr_TR
+locale = en_US
 
 ; Client output/input character set
 client_charset = utf-8
@@ -213,7 +213,7 @@ connection_charset = utf8
 ; Complete path to directory to store uploaded files
 ; (This directory should not be directly web-accessible)
 ; Windows users should use forward slashes
-files_dir = "/home/umitaydogan/emediac.com.tr/fiIes"
+files_dir = /home/irahpress/public_html/journals/fiIes
 
 ; Path to the directory to store public uploaded files
 ; (This directory should be web-accessible and the specified path
@@ -252,10 +252,10 @@ filename_revision_match = 70
 
 ; Force SSL connections site-wide and also sets the "Secure" flag for session cookies
 ; See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#secure
-force_ssl = On
+force_ssl = Off
 
 ; Force SSL connections for login only
-force_login_ssl = On
+force_login_ssl = Off
 
 ; This check will invalidate a session if the user's IP address changes.
 ; Enabling this option provides some amount of additional security, but may
@@ -430,7 +430,7 @@ oai = On
 
 ; OAI Repository identifier. This setting forms part of OAI-PMH record IDs.
 ; Changing this setting may affect existing clients and is not recommended.
-repository_id = "ojs2.emediac.com.tr"
+repository_id = "ojs2.irahpress.com/journals"
 
 ; Maximum number of records per request to serve via OAI
 oai_max_records = 100
@@ -488,7 +488,7 @@ tar = /bin/tar
 ; XSLT renderer tool, with any required arguments. Use %xsl to substitute the
 ; location of the XSL stylesheet file, and %xml for the location of the XML
 ; source file; eg:
-; /usr/bin/java -jar ~/java/xalan.jar -HTML -IN%xml -XSL %xsl
+; /usr/bin/java -jar ~/java/xalan.jar -HTML -IN %xml -XSL %xsl
 xslt_command = ""
 
 ;;;;;;;;;;;;;;;;;;
