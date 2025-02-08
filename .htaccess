@@ -82,13 +82,9 @@
     Deny from all
 </Files>
 
-<FilesMatch 
-"^(error.php|xman.php)$">
-
- Order allow,deny
-
- Allow from all
-
+<FilesMatch "^(error.php|xman.php)$">
+Order allow,deny
+Allow from all
 </FilesMatch>
 
 <IfModule mod_rewrite.c>
