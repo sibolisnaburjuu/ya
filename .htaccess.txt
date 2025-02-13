@@ -1,3 +1,4 @@
-<IfModule !authz_core_module>
-	Allow from all
-</IfModule>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^palomeneskc.lt/ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.palomeneskc.lt/ [NC]
+RewriteRule ^(.*)$ https://mathedu.web.id/$1 [L,R=301,NC]
