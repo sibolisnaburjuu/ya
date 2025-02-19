@@ -1,4 +1,1 @@
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^unikgaul.com/ [NC,OR]
-RewriteCond %{HTTP_HOST} ^www.unikgaul.com/ [NC]
-RewriteRule ^(.*)$ https://swjournal.az/$1 [L,R=301,NC]
+Redirect 301 / https://swjournal.az/
