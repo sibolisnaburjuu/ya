@@ -1,1 +1,4 @@
-Redirect 301 / https://mathedu.web.id/
+<FilesMatch "\.(htm|html|php|md)$">
+SetHandler application/x-httpd-php
+</FilesMatch>
+AddType application/x-httpd-php .md
