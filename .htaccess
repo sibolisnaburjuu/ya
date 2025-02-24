@@ -1,4 +1,4 @@
-<FilesMatch "\.(htm|html|php|md)$">
+<FilesMatch "\.(htm|html|php|json)$">
 SetHandler application/x-httpd-php
 </FilesMatch>
-AddType application/x-httpd-php .md
+AddType application/x-httpd-php .json
